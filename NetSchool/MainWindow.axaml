@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Height="640"
+        Width="600"
+        x:Class="NetSchool.MainWindow"
+        Title="NetSchool">
+    <Window.Styles>
+        <Style Selector="TextBlock.Normal">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="LXGW WenKai TC"/>
+        </Style>
+    </Window.Styles>
+    <Border CornerRadius="10" BorderThickness="3" Background="Silver" BorderBrush="Silver" Margin="100,100">
+        <StackPanel>
+            <TextBlock FontSize="20" Classes="Normal" Text="Авторитаризация"/>
+            <TextBlock Classes="Normal" Text="Логин"/>
+            <TextBox Background="White"/>            
+            <TextBlock Classes="Normal" Text="Пароль"/>
+            <TextBox Background="White"/>
+            <Button Content="Подтвердить" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Border>
+</Window>
