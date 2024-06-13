@@ -3,25 +3,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        Height="640"
-        Width="600"
         x:Class="NetSchool.MainWindow"
-        Title="NetSchool">
-    <Window.Styles>
-        <Style Selector="TextBlock.Normal">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="FontFamily" Value="LXGW WenKai TC"/>
-        </Style>
-    </Window.Styles>
-    <Border CornerRadius="10" BorderThickness="3" Background="Silver" BorderBrush="Silver" Margin="100,100">
-        <StackPanel>
-            <TextBlock FontSize="20" Classes="Normal" Text="Авторитаризация"/>
-            <TextBlock Classes="Normal" Text="Логин"/>
-            <TextBox Background="White"/>            
-            <TextBlock Classes="Normal" Text="Пароль"/>
-            <TextBox Background="White"/>
-            <Button Content="Подтвердить" HorizontalAlignment="Center"/>
-        </StackPanel>
-    </Border>
+		x:CompileBindings="False"
+        Title="MainWindow">
+	<Window.Styles>
+		<Style Selector="DataGrid">
+			<Setter Property="HeadersVisibility" Value="None" />
+		</Style>
+	</Window.Styles>
+	<DockPanel LastChildFill="True">
+		<DataGrid Margin="20"
+				  IsReadOnly="True"
+				  GridLinesVisibility="All"
+				  Name="MainDataGrid"
+				  BorderThickness="1" BorderBrush="Gray">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Имя"  Binding="{Binding name}"/>
+				<DataGridTemplateColumn Header="Дата">
+					<DataTemplate>
+						<DataGrid Margin="20" ItemsSource="{Binding grades}"
+						IsReadOnly="True"
+						GridLinesVisibility="All"
+						BorderThickness="1" BorderBrush="Gray" >
+							<DataGrid.Columns>
+								<DataGridTextColumn Header="" Binding="{Binding grade}" />
+							</DataGrid.Columns>
+						</DataGrid>
+					</DataTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+	</DockPanel>
 </Window>
