@@ -8,10 +8,13 @@
         Title="MainWindow">
 	<Window.Styles>
 		<Style Selector="DataGrid">
-			<Setter Property="HeadersVisibility" Value="None" />
 		</Style>
 	</Window.Styles>
 	<DockPanel LastChildFill="True">
+		<StackPanel Margin="20" DockPanel.Dock="Top" Orientation="Horizontal">
+			<ComboBox/>
+			<ComboBox/>
+			</StackPanel>
 		<DataGrid Margin="20"
 				  IsReadOnly="True"
 				  GridLinesVisibility="All"
@@ -19,18 +22,6 @@
 				  BorderThickness="1" BorderBrush="Gray">
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="Имя"  Binding="{Binding name}"/>
-				<DataGridTemplateColumn Header="Дата">
-					<DataTemplate>
-						<DataGrid Margin="20" ItemsSource="{Binding grades}"
-						IsReadOnly="True"
-						GridLinesVisibility="All"
-						BorderThickness="1" BorderBrush="Gray" >
-							<DataGrid.Columns>
-								<DataGridTextColumn Header="" Binding="{Binding grade}" />
-							</DataGrid.Columns>
-						</DataGrid>
-					</DataTemplate>
-				</DataGridTemplateColumn>
 			</DataGrid.Columns>
 		</DataGrid>
 	</DockPanel>

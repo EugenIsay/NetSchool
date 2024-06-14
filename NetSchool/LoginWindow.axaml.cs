@@ -9,17 +9,23 @@ namespace NetSchool;
 public partial class LoginWindow : Window
 {
     public string[] stdnt = { "aaa", "bbb", "ccc" };
+    Random rnd = new Random();
     public LoginWindow()
     {
         InitializeComponent();
-        if (SchoolStuff.students.Count() == 0)
+        foreach (var t in stdnt)
         {
-            foreach (string s in stdnt)
-            {
-                SchoolStuff.students.Add(new Student() { Name = s, Class = "A", Subjects = new List<Subject>() { new Subject("hstr", new Grade(4, DateTime.Now)) } });
-            }
-            SchoolStuff.Fill("A", "hstr");
+            SchoolStuff.AddStudent(t, "a");
         }
+        foreach (var s in SchoolStuff.students)
+        {
+            SchoolStuff.AddToSubject(s.FindMyId, rnd.Next(0, 2), "Me");
+            foreach (var g in s._subjects)
+            {
+                SchoolStuff.AddGrade(s.FindMyId, Array.IndexOf(SchoolStuff.Subjects_List, g.Name), rnd.Next(2, 5), null);
+            }
+        }
+        SchoolStuff.Fill("a", "Математика");
     }
     public void Comfirm(object? sender, RoutedEventArgs e)
     {

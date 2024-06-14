@@ -11,5 +11,9 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         MainDataGrid.ItemsSource = SchoolStuff.ShownStudents;
+        foreach (var item in SchoolStuff.ShownStudents)
+        {
+            MainDataGrid.Columns.Add(new DataGridTextColumn() { Header = item.grades[0].time.ToString()  });
+        }
     }
 }
