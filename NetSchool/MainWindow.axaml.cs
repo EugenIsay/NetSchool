@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Data;
 using Avalonia.Markup.Xaml;
 using System.Linq;
 
@@ -11,9 +12,16 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         MainDataGrid.ItemsSource = SchoolStuff.ShownStudents;
-        foreach (var item in SchoolStuff.ShownStudents)
+        var a = SchoolStuff.students;
+        foreach (var time in SchoolStuff.GetDates())
         {
-            MainDataGrid.Columns.Add(new DataGridTextColumn() { Header = item.grades[0].time.ToString()  });
+            var column = new DataGridTextColumn();
+            foreach (var item in SchoolStuff.ShownStudents)
+            {
+                column.Header = item.grades[0].time.ToString();
+            }
+            MainDataGrid.Columns.Add(column);
         }
+
     }
 }

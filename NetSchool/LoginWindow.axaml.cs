@@ -22,7 +22,7 @@ public partial class LoginWindow : Window
             SchoolStuff.AddToSubject(s.FindMyId, rnd.Next(0, 2), "Me");
             foreach (var g in s._subjects)
             {
-                SchoolStuff.AddGrade(s.FindMyId, Array.IndexOf(SchoolStuff.Subjects_List, g.Name), rnd.Next(2, 5), null);
+                SchoolStuff.AddGrade(s.FindMyId, Array.IndexOf(SchoolStuff.Subjects_List, g.Name), rnd.Next(2, 5), DateTime.UtcNow);
             }
         }
         SchoolStuff.Fill("a", "Математика");

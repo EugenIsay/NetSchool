@@ -11,24 +11,24 @@
       "RelativeMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|solutionrelative:netschool\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|c:\\users\\class_student\\desktop\\isayproj\\netschool\\netschool\\loginwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|solutionrelative:netschool\\loginwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|c:\\users\\class_student\\desktop\\isayproj\\netschool\\netschool\\schoolstuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|solutionrelative:netschool\\schoolstuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|c:\\users\\class_student\\desktop\\isayproj\\netschool\\netschool\\loginwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
       "RelativeMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|solutionrelative:netschool\\loginwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|c:\\users\\class_student\\desktop\\isayproj\\netschool\\netschool\\schoolstuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|solutionrelative:netschool\\schoolstuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|c:\\users\\class_student\\desktop\\isayproj\\netschool\\netschool\\loginwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|solutionrelative:netschool\\loginwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|c:\\users\\class_student\\desktop\\isayproj\\netschool\\netschool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|solutionrelative:netschool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|c:\\users\\class_student\\desktop\\isayproj\\netschool\\netschool\\userslist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C5CEE0E-5653-495F-8927-E7FF81C9A6A1}|NetSchool\\NetSchool.csproj|solutionrelative:netschool\\userslist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Class_Student\\Desktop\\IsayProj\\NetSchool\\NetSchool\\UsersList.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:NetSchool\\UsersList.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -60,7 +60,7 @@
               "RelativeDocumentMoniker": "NetSchool\\MainWindow.axaml.cs",
               "ToolTip": "C:\\Users\\Class_Student\\Desktop\\IsayProj\\NetSchool\\NetSchool\\MainWindow.axaml.cs",
               "RelativeToolTip": "NetSchool\\MainWindow.axaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T08:27:39.076Z",
               "EditorCaption": ""
@@ -80,13 +80,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "LoginWindow.axaml.cs",
               "DocumentMoniker": "C:\\Users\\Class_Student\\Desktop\\IsayProj\\NetSchool\\NetSchool\\LoginWindow.axaml.cs",
               "RelativeDocumentMoniker": "NetSchool\\LoginWindow.axaml.cs",
               "ToolTip": "C:\\Users\\Class_Student\\Desktop\\IsayProj\\NetSchool\\NetSchool\\LoginWindow.axaml.cs",
               "RelativeToolTip": "NetSchool\\LoginWindow.axaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAANAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwBcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T08:25:45.856Z",
               "EditorCaption": ""
@@ -105,13 +105,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "SchoolStuff.cs",
               "DocumentMoniker": "C:\\Users\\Class_Student\\Desktop\\IsayProj\\NetSchool\\NetSchool\\SchoolStuff.cs",
               "RelativeDocumentMoniker": "NetSchool\\SchoolStuff.cs",
               "ToolTip": "C:\\Users\\Class_Student\\Desktop\\IsayProj\\NetSchool\\NetSchool\\SchoolStuff.cs",
               "RelativeToolTip": "NetSchool\\SchoolStuff.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAIAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T08:10:06.897Z",
               "EditorCaption": ""
@@ -126,8 +126,7 @@
               "RelativeToolTip": "NetSchool\\UsersList.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T07:58:31.52Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-13T07:58:31.52Z"
             }
           ]
         }

@@ -12,6 +12,20 @@ namespace NetSchool
         public static string[] Subjects_List = { "История", "Математика", "Информатика" };
         public static List<Student> students = new List<Student>();
         public static List<Response> ShownStudents = new List<Response>();
+        public static List<DateTime?> GetDates()
+        {
+            List<DateTime?> dates = new List<DateTime?>();
+            foreach (var s in ShownStudents)
+            {
+                foreach (var t in s.grades)
+                {
+                    dates.Add(t.time);
+                }
+            }
+            dates = dates.Distinct().ToList();
+            return dates;
+
+        }
 
         public static void AddStudent(string name, string cur_class)
         {
@@ -27,14 +41,24 @@ namespace NetSchool
         }
         public static void Fill(string Class, string Subject)
         {
-            ShownStudents = students.Where(s => s.Class == Class).Select(s => new Response() { name = s.Name }).ToList();
+            List<Student> tmp = students.Where(s => s.Class == Class).ToList();
+            List<Response> answer = new List<Response>();
+            foreach (Student student in tmp)
+            {
+                if (student.Subjects.Where(s => s.Name == Subject).Count() != 0)
+                {
+                    answer.Add(new Response { name = student.Name, grades = student.Subjects.FirstOrDefault(s => s.Name == Subject).SubjectGrades });
+                }
+            }
+            ShownStudents = answer;
         }
     }
     public class Response
     {
         public string name
         { get; set; }
-        public List<Grade> grades 
+
+        public List<Grade> grades
         { get; set; }
     }
 }
