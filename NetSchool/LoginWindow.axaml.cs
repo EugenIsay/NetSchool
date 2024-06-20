@@ -25,6 +25,10 @@ public partial class LoginWindow : Window
                 SchoolStuff.AddGrade(s.FindMyId, Array.IndexOf(SchoolStuff.Subjects_List, g.Name), rnd.Next(2, 5), DateTime.UtcNow);
             }
         }
+        SchoolStuff.AddStudent("Me", "a");
+        SchoolStuff.AddToSubject(SchoolStuff.students.FirstOrDefault(s => s.Name == "Me").FindMyId, 1, "Me");
+        SchoolStuff.AddGrade(SchoolStuff.students.FirstOrDefault(s => s.Name == "Me").FindMyId, 1, 5, DateTime.Parse("Jan 1, 2009"));
+        SchoolStuff.AddGrade(SchoolStuff.students.FirstOrDefault(s => s.Name == "Me").FindMyId, 1, 5, DateTime.Parse("Jan 1, 2022"));
         SchoolStuff.Fill("a", "Математика");
     }
     public void Comfirm(object? sender, RoutedEventArgs e)

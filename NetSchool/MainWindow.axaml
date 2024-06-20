@@ -8,21 +8,19 @@
         Title="MainWindow">
 	<Window.Styles>
 		<Style Selector="DataGrid">
+			<Setter Property="HeadersVisibility" Value="None"/>
 		</Style>
 	</Window.Styles>
 	<DockPanel LastChildFill="True">
 		<StackPanel Margin="20" DockPanel.Dock="Top" Orientation="Horizontal">
 			<ComboBox/>
 			<ComboBox/>
-			</StackPanel>
+		</StackPanel>
 		<DataGrid Margin="20"
 				  IsReadOnly="True"
 				  GridLinesVisibility="All"
 				  Name="MainDataGrid"
 				  BorderThickness="1" BorderBrush="Gray">
-			<DataGrid.Columns>
-				<DataGridTextColumn Header="Имя"  Binding="{Binding name}"/>
-			</DataGrid.Columns>
 		</DataGrid>
 	</DockPanel>
 </Window>

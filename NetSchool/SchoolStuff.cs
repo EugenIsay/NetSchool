@@ -19,7 +19,7 @@ namespace NetSchool
             {
                 foreach (var t in s.grades)
                 {
-                    dates.Add(t.time);
+                    dates.Add(t.time.Value.Date.Date);
                 }
             }
             dates = dates.Distinct().ToList();
