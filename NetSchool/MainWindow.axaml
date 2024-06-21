@@ -12,14 +12,26 @@
 		</Style>
 	</Window.Styles>
 	<DockPanel LastChildFill="True">
-		<StackPanel Margin="20" DockPanel.Dock="Top" Orientation="Horizontal">
-			<ComboBox/>
-			<ComboBox/>
-		</StackPanel>
+		<Grid DockPanel.Dock="Top">
+			<StackPanel Margin="20" Orientation="Horizontal">
+				<ComboBox SelectionChanged="Subject_SelectionChanged" Name="SelectSubject"/>
+				<ComboBox SelectionChanged="Class_SelectionChanged" Name="SelectClass"/>
+			</StackPanel>
+			<StackPanel Margin="20" HorizontalAlignment="Right" Orientation="Horizontal">
+				<TextBlock Text="Name"/>
+			</StackPanel>
+		</Grid>
+		<TextBlock Name="MonthName" HorizontalAlignment="Center" DockPanel.Dock="Top" Text="Error" />
+		<Grid Margin="20,-10,20,10"  DockPanel.Dock="Bottom">
+			<Button Click="Previous" Content="Предидущий"/>
+			<Button Click="Next" HorizontalAlignment="Right" Content="Следующий"/>
+		</Grid>
 		<DataGrid Margin="20"
+				  BeginningEdit="DataGrid_BeginningEdit"
 				  IsReadOnly="True"
 				  GridLinesVisibility="All"
 				  Name="MainDataGrid"
+				  
 				  BorderThickness="1" BorderBrush="Gray">
 		</DataGrid>
 	</DockPanel>

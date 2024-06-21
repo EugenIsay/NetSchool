@@ -29,7 +29,7 @@ public partial class LoginWindow : Window
         SchoolStuff.AddToSubject(SchoolStuff.students.FirstOrDefault(s => s.Name == "Me").FindMyId, 1, "Me");
         SchoolStuff.AddGrade(SchoolStuff.students.FirstOrDefault(s => s.Name == "Me").FindMyId, 1, 5, DateTime.Parse("Jan 1, 2009"));
         SchoolStuff.AddGrade(SchoolStuff.students.FirstOrDefault(s => s.Name == "Me").FindMyId, 1, 5, DateTime.Parse("Jan 1, 2022"));
-        SchoolStuff.Fill("a", "Математика");
+        
     }
     public void Comfirm(object? sender, RoutedEventArgs e)
     {
