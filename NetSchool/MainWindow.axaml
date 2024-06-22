@@ -8,7 +8,6 @@
         Title="MainWindow">
 	<Window.Styles>
 		<Style Selector="DataGrid">
-			<Setter Property="HeadersVisibility" Value="None"/>
 		</Style>
 	</Window.Styles>
 	<DockPanel LastChildFill="True">
@@ -27,8 +26,8 @@
 			<Button Click="Next" HorizontalAlignment="Right" Content="Следующий"/>
 		</Grid>
 		<DataGrid Margin="20"
+				  CellEditEnded="DataGrid_CellEditEnded"
 				  BeginningEdit="DataGrid_BeginningEdit"
-				  IsReadOnly="True"
 				  GridLinesVisibility="All"
 				  Name="MainDataGrid"
 				  

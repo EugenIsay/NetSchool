@@ -31,14 +31,15 @@ public partial class MainWindow : Window
     {
         MainDataGrid.Columns.Clear();
         MonthName.Text = new DateTime(year, month, 1).ToString("MMMM/yyyy");
-        List<List<string>> Temp = [new List<string>()];
-        Temp[0].Add("Имя");
+        List<List<string>> Temp = new List<List<string>>();
+        List<string> header = new List<string>();
+        header.Add("Имя");
         int numDays = DateTime.DaysInMonth(year, month);
         for (int i = 1; i < numDays + 1; i++)
         {
-            Temp[0].Add($"{i}");
+            header.Add($"{i}");
         }
-        int n = 1;
+        int n = 0;
         foreach (var student in SchoolStuff.ShownStudents)
         {
             Temp.Add(new List<string>());
@@ -46,14 +47,14 @@ public partial class MainWindow : Window
             Temp[n][0] = student.name;
             foreach (var grade in student.grades.Where(d => d.time.Value.Month == month && d.time.Value.Year == year))
             {
-                Temp[n][Temp[0].IndexOf(grade.time.Value.Day.ToString())] = grade.grade.ToString();
+                Temp[n][header.IndexOf(grade.time.Value.Day.ToString())] = grade.grade.ToString();
             }
             n++;
         }
         MainDataGrid.ItemsSource = Temp;
         for (int j = 0; j < numDays + 1; j++)
         {
-            MainDataGrid.Columns.Add(new DataGridTextColumn() { Binding = new Binding($"[{j}]") });
+            MainDataGrid.Columns.Add(new DataGridTextColumn() { Binding = new Binding($"[{j}]"), IsReadOnly = j == 0, Header = header[j] });
         }
     }
 
@@ -99,6 +100,19 @@ public partial class MainWindow : Window
 
     private void DataGrid_BeginningEdit(object? sender, Avalonia.Controls.DataGridBeginningEditEventArgs e)
     {
-        MonthName.Text = "AAAAAAAAA не трогай";
+
+    }
+
+    private void DataGrid_CellEditEnded(object? sender, Avalonia.Controls.DataGridCellEditEndedEventArgs e)
+    {
+        var r = ((List<string>)MainDataGrid.SelectedItem);
+        int a = MainDataGrid.SelectedIndex;
+        int b = MainDataGrid.CurrentColumn.DisplayIndex;
+        MonthName.Text = $"AAAAAAAAA не трогай {a}, {b} а предмет {r}";
+
+        SchoolStuff.AddGrade(SchoolStuff.students.FirstOrDefault(s => s.Name == r[0] &&
+        s.Class == SchoolStuff.Class_List[SelectedClass] &&
+        s.Subjects.Where(sub => sub.Name == SchoolStuff.Subjects_List[SelectedSubject]).Count() != 0).FindMyId, SelectedSubject, Int32.Parse(r[b]), new DateTime(CurYear, CurMonth, b));
+
     }
 }
