@@ -1,10 +1,5 @@
 ﻿namespace NetSchool;
 
-public static class UsersList
-{
-    
-}
-
 public class User
 {
     public string Name { get; set; }

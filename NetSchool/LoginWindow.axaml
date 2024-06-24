@@ -6,22 +6,26 @@
         Height="640"
         Width="600"
         x:Class="NetSchool.LoginWindow"
-        Title="NetSchool">
+        Title="NetSchool" >
     <Window.Styles>
         <Style Selector="TextBlock.Normal">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontFamily" Value="LXGW WenKai TC"/>
+			<Setter Property="Foreground" Value="#B0E0E6"/>
         </Style>
     </Window.Styles>
-    <Border CornerRadius="10" BorderThickness="3" Background="Silver" BorderBrush="Silver" Margin="100,100">
-        <StackPanel>
-            <TextBlock FontSize="20" Classes="Normal" Text="Авторитаризация"/>
+    <Border Name="Border" CornerRadius="10" BorderThickness="3" Background="White"  Margin="100,100">
+		<Border.Background>
+			<ImageBrush Source="/Assets/authorization.png" Stretch="UniformToFill"/>
+		</Border.Background>
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Margin="0,20" FontStyle="" FontSize="20" Classes="Normal" Foreground="White" Text="АВТОРИТАРИЗАЦИЯ"/>
             <TextBlock Classes="Normal" Text="Логин"/>
-            <TextBox Background="White"/>            
+            <TextBox Name="Name" Background="White"/>            
             <TextBlock Classes="Normal" Text="Пароль"/>
-            <TextBox Background="White"/>
-            <Button Click="Comfirm" Content="Подтвердить" HorizontalAlignment="Center"/>
+            <TextBox Name="Password" Background="White"/>
+            <Button Margin="0,20" Background="#FFA500" Click="Comfirm" Content="Подтвердить" HorizontalAlignment="Center"/>
         </StackPanel>
     </Border>
 </Window>

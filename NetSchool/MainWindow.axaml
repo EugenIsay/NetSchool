@@ -5,25 +5,26 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="NetSchool.MainWindow"
 		x:CompileBindings="False"
+		xmlns:local="clr-namespace:NetSchool"
         Title="MainWindow">
 	<Window.Styles>
 		<Style Selector="DataGrid">
 		</Style>
 	</Window.Styles>
 	<DockPanel LastChildFill="True">
-		<Grid DockPanel.Dock="Top">
-			<StackPanel Margin="20" Orientation="Horizontal">
+		<Grid Background="#1E90FF" DockPanel.Dock="Top">
+			<StackPanel Margin="15" Orientation="Horizontal">
 				<ComboBox SelectionChanged="Subject_SelectionChanged" Name="SelectSubject"/>
 				<ComboBox SelectionChanged="Class_SelectionChanged" Name="SelectClass"/>
 			</StackPanel>
-			<StackPanel Margin="20" HorizontalAlignment="Right" Orientation="Horizontal">
-				<TextBlock Text="Name"/>
+			<StackPanel Margin="15" HorizontalAlignment="Right" Orientation="Horizontal">
+				<TextBlock Name="Name" Text="name "/>
 			</StackPanel>
 		</Grid>
-		<TextBlock Name="MonthName" HorizontalAlignment="Center" DockPanel.Dock="Top" Text="Error" />
+		<TextBlock Name="MonthName" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Bottom" DockPanel.Dock="Top" Text="Error" />
 		<Grid Margin="20,-10,20,10"  DockPanel.Dock="Bottom">
-			<Button Click="Previous" Content="Предидущий"/>
-			<Button Click="Next" HorizontalAlignment="Right" Content="Следующий"/>
+			<Button Background="#FFA500" Click="Previous" Content="Предидущий"/>
+			<Button Background="#FFA500" Click="Next" HorizontalAlignment="Right" Content="Следующий"/>
 		</Grid>
 		<DataGrid Margin="20"
 				  CellEditEnded="DataGrid_CellEditEnded"

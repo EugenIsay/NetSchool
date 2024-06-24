@@ -3,6 +3,11 @@ using Avalonia.Interactivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Avalonia.Media.Imaging;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace NetSchool;
 
@@ -13,6 +18,7 @@ public partial class LoginWindow : Window
     public LoginWindow()
     {
         InitializeComponent();
+        UserManager.AddUser("admin", "admin", "admin");
         foreach (var t in stdnt)
         {
             SchoolStuff.AddStudent(t, "a");
@@ -33,7 +39,11 @@ public partial class LoginWindow : Window
     }
     public void Comfirm(object? sender, RoutedEventArgs e)
     {
-        new MainWindow().Show();
-        this.Close();
+        if (UserManager.CheckUser(Name.Text, Password.Text))
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
+
     }
 }

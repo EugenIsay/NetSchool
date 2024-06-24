@@ -19,6 +19,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        Name.Text                     = UserManager.curentUser.Name;
         SelectSubject.ItemsSource = SchoolStuff.Subjects_List.ToList();
         SelectClass.ItemsSource = SchoolStuff.Class_List.ToList();
         int SelectedSubject = 1;

@@ -23,4 +23,12 @@
         <DependentUpon>LoginWindow.axaml</DependentUpon>
       </Compile>
     </ItemGroup>
+
+	<ItemGroup>
+		<AvaloniaResource Include="Assets\**" />
+	</ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\" />
+    </ItemGroup>
 </Project>
