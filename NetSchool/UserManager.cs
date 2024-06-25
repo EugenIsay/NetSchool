@@ -10,6 +10,8 @@ namespace NetSchool
     {
         public static List<User> Users = new List<User>();
         public static User curentUser = new User();
+        public static bool IsAdmin { get => curentUser.Role == "admin"; }
+        public static bool IsNotTeacher { get => curentUser.Role != "teacher"; }
         public static void AddUser(string Name, string Password, string Role)
         {
             Users.Add(new User() { Name = Name, Password = Password, Role = Role });

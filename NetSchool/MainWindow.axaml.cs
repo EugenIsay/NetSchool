@@ -12,14 +12,14 @@ namespace NetSchool;
 
 public partial class MainWindow : Window
 {
-    int CurMonth = DateTime.Now.Month;
-    int CurYear = DateTime.Now.Year;
+    int CurMonth = 5;
+    int CurYear = 2024;
     int SelectedSubject = 0;
     int SelectedClass = 0;
     public MainWindow()
     {
         InitializeComponent();
-        Name.Text                     = UserManager.curentUser.Name;
+        Name.Text = UserManager.curentUser.Name;
         SelectSubject.ItemsSource = SchoolStuff.Subjects_List.ToList();
         SelectClass.ItemsSource = SchoolStuff.Class_List.ToList();
         int SelectedSubject = 1;
@@ -53,17 +53,26 @@ public partial class MainWindow : Window
             n++;
         }
         MainDataGrid.ItemsSource = Temp;
-        for (int j = 0; j < numDays + 1; j++)
+        MainDataGrid.Columns.Add(new DataGridTextColumn() { Binding = new Binding($"[{0}]"), IsReadOnly = true, Header = header[0] });
+        for (int j = 1; j < numDays + 1; j++)
         {
-            MainDataGrid.Columns.Add(new DataGridTextColumn() { Binding = new Binding($"[{j}]"), IsReadOnly = j == 0, Header = header[j] });
+            if((int)(new DateTime(year, month, j).DayOfWeek) != 0)
+            {
+                MainDataGrid.Columns.Add(new DataGridTextColumn() { Binding = new Binding($"[{j}]"), IsReadOnly = false, Header = header[j] });
+            }
+
         }
     }
 
     private void Next(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        if (CurMonth < 12)
+        if (CurMonth < 12 && CurMonth != 5)
         {
             CurMonth++;
+        }
+        else if (CurMonth == 5)
+        {
+            CurMonth = 9;
         }
         else
         {
@@ -74,9 +83,13 @@ public partial class MainWindow : Window
     }
     private void Previous(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        if (CurMonth > 1)
+        if (CurMonth > 1 && CurMonth != 9)
         {
             CurMonth--;
+        }
+        else if (CurMonth == 9)
+        {
+            CurMonth = 5;
         }
         else
         {
@@ -98,22 +111,29 @@ public partial class MainWindow : Window
         SchoolStuff.Fill(SelectedClass, SelectedSubject);
         FillGrid(CurMonth, CurYear);
     }
-
-    private void DataGrid_BeginningEdit(object? sender, Avalonia.Controls.DataGridBeginningEditEventArgs e)
-    {
-
-    }
-
     private void DataGrid_CellEditEnded(object? sender, Avalonia.Controls.DataGridCellEditEndedEventArgs e)
     {
         var r = ((List<string>)MainDataGrid.SelectedItem);
         int a = MainDataGrid.SelectedIndex;
-        int b = MainDataGrid.CurrentColumn.DisplayIndex;
+        int b = Int32.Parse(MainDataGrid.CurrentColumn.Header.ToString());
         MonthName.Text = $"AAAAAAAAA не трогай {a}, {b} а предмет {r}";
+        try
+        {
+            Int32.Parse(r[b]);
+            SchoolStuff.AddGrade(SchoolStuff.students.FirstOrDefault(s => s.Name == r[0] &&
+            s.Class == SchoolStuff.Class_List[SelectedClass] &&
+            s.Subjects.Where(sub => sub.Name == SchoolStuff.Subjects_List[SelectedSubject]).Count() != 0).FindMyId, SelectedSubject, Int32.Parse(r[b]), new DateTime(CurYear, CurMonth, b));
+        }
+        catch (Exception ex)
+        {
+            MonthName.Text = ex.Message;
+        }
+        SchoolStuff.Fill(SelectedClass, SelectedSubject);
+        FillGrid(CurMonth, CurYear);
+    }
 
-        SchoolStuff.AddGrade(SchoolStuff.students.FirstOrDefault(s => s.Name == r[0] &&
-        s.Class == SchoolStuff.Class_List[SelectedClass] &&
-        s.Subjects.Where(sub => sub.Name == SchoolStuff.Subjects_List[SelectedSubject]).Count() != 0).FindMyId, SelectedSubject, Int32.Parse(r[b]), new DateTime(CurYear, CurMonth, b));
-
+    private async void Add_User(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        await new AddUsers().ShowDialog(this);
     }
 }

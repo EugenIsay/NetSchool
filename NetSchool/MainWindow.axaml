@@ -21,18 +21,22 @@
 				<TextBlock Name="Name" Text="name "/>
 			</StackPanel>
 		</Grid>
-		<TextBlock Name="MonthName" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Bottom" DockPanel.Dock="Top" Text="Error" />
+		<Grid DockPanel.Dock="Top">
+			<Button Click="Add_User" Background="#B0E0E6" HorizontalAlignment="Left" Content="Добавить пользователя" VerticalAlignment="Center" Margin="15,15,0,0" />
+			<TextBlock Name="MonthName" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Center" DockPanel.Dock="Top" Text="Error" />
+		</Grid>
 		<Grid Margin="20,-10,20,10"  DockPanel.Dock="Bottom">
 			<Button Background="#FFA500" Click="Previous" Content="Предидущий"/>
 			<Button Background="#FFA500" Click="Next" HorizontalAlignment="Right" Content="Следующий"/>
 		</Grid>
 		<DataGrid Margin="20"
+				  CellEditEnding=""
 				  CellEditEnded="DataGrid_CellEditEnded"
-				  BeginningEdit="DataGrid_BeginningEdit"
 				  GridLinesVisibility="All"
 				  Name="MainDataGrid"
-				  
+				  IsReadOnly="{x:Static local:UserManager.IsNotTeacher}"
 				  BorderThickness="1" BorderBrush="Gray">
 		</DataGrid>
 	</DockPanel>
+	
 </Window>

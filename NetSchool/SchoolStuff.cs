@@ -23,7 +23,7 @@ namespace NetSchool
         }
         public static void AddToSubject(int student_id, int subject_name, string Teacher)
         {
-            students[student_id]._subjects.Add( new Subject { Name = Subjects_List[subject_name], Teacher = Teacher });
+            students[student_id]._subjects.Add( new Subject { Name = Subjects_List[subject_name]});
         }
         public static void AddGrade(int student_id, int subject_id, int grade, DateTime? time)
         {

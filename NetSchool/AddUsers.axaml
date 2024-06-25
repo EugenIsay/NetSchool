@@ -1,0 +1,87 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="NetSchool.AddUsers"
+		xmlns:local="clr-namespace:NetSchool"
+		x:CompileBindings="False"
+        Title="AddUsers">
+	<Window.Styles>
+		<Style Selector="TextBlock">
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
+	</Window.Styles>
+	<DockPanel>
+		<TextBlock DockPanel.Dock="Top" Margin="0,15,0,0" TextAlignment="Center" FontSize="20" Foreground="Black" Text="Выберите какого пользователя хотите добавить"/>
+		<TextBlock DockPanel.Dock="Bottom" Margin="0,15" Text=""/>
+		<TabControl HorizontalAlignment="Center" DockPanel.Dock="Top" >
+			<TabItem >
+				<TabItem.HeaderTemplate>
+					<DataTemplate>
+						<Border Background="#1E90FF" CornerRadius="20,1"  BorderThickness="10">
+							<TextBlock Text="Добавить учителя"/>
+						</Border>
+					</DataTemplate>
+				</TabItem.HeaderTemplate>
+				
+				<Border CornerRadius="10, 20" BorderThickness="1">
+					<Border.Background>
+						<ImageBrush Source="/Assets/add_back.png" Stretch="UniformToFill"/>
+					</Border.Background>
+					<DockPanel Margin="10">
+						<TextBlock DockPanel.Dock="Top" Text="Имя"/>
+						<TextBox DockPanel.Dock="Top"/>
+						<TextBlock DockPanel.Dock="Top" Text="Пароль"/>
+						<TextBox DockPanel.Dock="Top"/>
+						<Button DockPanel.Dock="Bottom" Click="AddTeach" Content="Добвить"/>
+						<ListBox DockPanel.Dock="Top" ItemsSource="{x:Static local:SchoolStuff.Subjects_List}" Margin="0,15" Name="StudentSubjects" >
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<StackPanel>
+										<TextBlock Foreground="#4169E1" Text="{Binding}"/>
+										<CheckBox IsChecked="false" />
+									</StackPanel>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+						</ListBox>
+					</DockPanel>
+					
+				</Border>
+			</TabItem>
+
+			<TabItem Header="Добавить ученика">
+				<TabItem.HeaderTemplate>
+					<DataTemplate>
+						<Border Background="#FFA500" CornerRadius="20,1"  BorderThickness="10">
+							<TextBlock Text="Добавить ученика"/>
+						</Border>
+					</DataTemplate>
+				</TabItem.HeaderTemplate>
+				<Border CornerRadius="10, 20" BorderThickness="1">
+					<Border.Background>
+						<ImageBrush Source="/Assets/add_back2.png" Stretch="UniformToFill"/>
+					</Border.Background>
+					<DockPanel Margin="10">
+						<TextBlock DockPanel.Dock="Top" Text="Имя"/>
+						<TextBox Name="StudName" DockPanel.Dock="Top"/>
+						<TextBlock DockPanel.Dock="Top" Text="Класс"/>
+						<TextBox Name="StudClass" DockPanel.Dock="Top"/>
+						<Button DockPanel.Dock="Bottom" Click="AddStud" Content="Добвить"/>
+						<ListBox Name="StudSubj" ItemsSource="{x:Static local:SchoolStuff.Subjects_List}" Margin="0,15" DockPanel.Dock="Top">
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<StackPanel>										
+										<CheckBox IsChecked="false" />
+										<TextBlock Foreground="#FF4500" Text="{Binding}"/>
+
+									</StackPanel>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+						</ListBox>
+					</DockPanel>
+				</Border>
+			</TabItem>
+		</TabControl>
+	</DockPanel>
+</Window>
