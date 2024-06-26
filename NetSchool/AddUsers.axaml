@@ -66,15 +66,17 @@
 						<TextBlock DockPanel.Dock="Top" Text="Имя"/>
 						<TextBox Name="StudName" DockPanel.Dock="Top"/>
 						<TextBlock DockPanel.Dock="Top" Text="Класс"/>
-						<TextBox Name="StudClass" DockPanel.Dock="Top"/>
+						<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+							<ComboBox Name="classNum" />
+							<ComboBox Name="classLetter"/>
+						</StackPanel>
 						<Button DockPanel.Dock="Bottom" Click="AddStud" Content="Добвить"/>
-						<ListBox Name="StudSubj" ItemsSource="{x:Static local:SchoolStuff.Subjects_List}" Margin="0,15" DockPanel.Dock="Top">
+						<ListBox Name="StudSubj" Margin="0,15" DockPanel.Dock="Top">
 							<ListBox.ItemTemplate>
 								<DataTemplate>
-									<StackPanel>										
-										<CheckBox IsChecked="false" />
-										<TextBlock Foreground="#FF4500" Text="{Binding}"/>
-
+									<StackPanel>
+										<TextBlock Foreground="#FF4500" Text="{Binding Name}"/>								
+										<CheckBox IsChecked="{Binding Add}" />
 									</StackPanel>
 								</DataTemplate>
 							</ListBox.ItemTemplate>

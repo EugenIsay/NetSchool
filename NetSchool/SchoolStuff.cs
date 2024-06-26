@@ -21,7 +21,7 @@ namespace NetSchool
             if (!Class_List.Contains(cur_class))
                 Class_List.Add(cur_class);
         }
-        public static void AddToSubject(int student_id, int subject_name, string Teacher)
+        public static void AddToSubject(int student_id, int subject_name)
         {
             students[student_id]._subjects.Add( new Subject { Name = Subjects_List[subject_name]});
         }
