@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace NetSchool;
 
@@ -14,9 +15,11 @@ public partial class MainWindow : Window
 {
     int CurMonth = 5;
     int CurYear = 2024;
+    int Last = 0;
     int SelectedSubject = 0;
     int SelectedClass = 0;
     List<string> Subjects = new List<string>();
+    List<List<string>> Table;
     public MainWindow()
     {
         InitializeComponent();
@@ -29,7 +32,7 @@ public partial class MainWindow : Window
         {
             Subjects = SchoolStuff.Subjects_List.ToList();
         }
-        SelectSubject.ItemsSource = SchoolStuff.Subjects_List.ToList();
+        SelectSubject.ItemsSource = Subjects.ToList();
         SelectClass.ItemsSource = SchoolStuff.Class_List.ToList();
         int SelectedSubject = 0;
         int SelectedClass = 0;
@@ -61,11 +64,12 @@ public partial class MainWindow : Window
             }
             n++;
         }
+        Table = new List<List<string>>(Temp);
         MainDataGrid.ItemsSource = Temp;
         MainDataGrid.Columns.Add(new DataGridTextColumn() { Binding = new Binding($"[{0}]"), IsReadOnly = true, Header = header[0] });
         for (int j = 1; j < numDays + 1; j++)
         {
-            if((int)(new DateTime(year, month, j).DayOfWeek) != 0)
+            if ((int)(new DateTime(year, month, j).DayOfWeek) != 0)
             {
                 MainDataGrid.Columns.Add(new DataGridTextColumn() { Binding = new Binding($"[{j}]"), IsReadOnly = false, Header = header[j] });
             }
@@ -110,7 +114,7 @@ public partial class MainWindow : Window
 
     private void Subject_SelectionChanged(object? sender, Avalonia.Controls.SelectionChangedEventArgs e)
     {
-        SelectedSubject = SelectSubject.SelectedIndex;
+        SelectedSubject = Array.IndexOf( SchoolStuff.Subjects_List, SelectSubject.SelectedItem );
         if (SelectedClass != -1 && SelectedSubject != -1)
         {
             SchoolStuff.Fill(SelectedClass, SelectedSubject);
@@ -128,26 +132,38 @@ public partial class MainWindow : Window
     }
     private void DataGrid_CellEditEnded(object? sender, Avalonia.Controls.DataGridCellEditEndedEventArgs e)
     {
-        var r = ((List<string>)MainDataGrid.SelectedItem);
+        var r = (List<string>)MainDataGrid.SelectedItem;
         int a = MainDataGrid.SelectedIndex;
         int b = Int32.Parse(MainDataGrid.CurrentColumn.Header.ToString());
-        MonthName.Text = $"AAAAAAAAA не трогай {a}, {b} а предмет {r}";
+        if (Last != 0)
+        {
+            var f = SchoolStuff.students.FirstOrDefault(s => s.Name == r[0] && s.Class == SchoolStuff.Class_List[SelectedClass])
+                .Subjects.FirstOrDefault(s => s.Name == SchoolStuff.Subjects_List[SelectedSubject]).SubjectGrades;
+            Grade grade = f.FirstOrDefault(g => g.grade == Last && g.time == new DateTime(CurYear, CurMonth, b));
+            int ind = f.IndexOf(grade);
+            SchoolStuff.students.FirstOrDefault(s => s.Name == r[0] && s.Class == SchoolStuff.Class_List[SelectedClass])
+                .Subjects.FirstOrDefault(s => s.Name == SchoolStuff.Subjects_List[SelectedSubject]).SubjectGrades.RemoveAt(ind);
+        }
         try
         {
-            Int32.Parse(r[b]);
-            SchoolStuff.AddGrade(SchoolStuff.students.FirstOrDefault(s => s.Name == r[0] &&
-            s.Class == SchoolStuff.Class_List[SelectedClass] &&
-            s.Subjects.Where(sub => sub.Name == SchoolStuff.Subjects_List[SelectedSubject]).Count() != 0).FindMyId, SelectedSubject, Int32.Parse(r[b]), new DateTime(CurYear, CurMonth, b));
+            if (Enumerable.Range(1, 5).Contains(Int32.Parse(r[b])))
+            {
+                SchoolStuff.AddGrade(SchoolStuff.students.FirstOrDefault(s => s.Name == r[0] &&
+                s.Class == SchoolStuff.Class_List[SelectedClass] &&
+                s.Subjects.Where(sub => sub.Name == SchoolStuff.Subjects_List[SelectedSubject]).Count() != 0).FindMyId, SelectedSubject, Int32.Parse(r[b]), new DateTime(CurYear, CurMonth, b));
+
+            }
+
         }
         catch (Exception ex)
         {
-            MonthName.Text = ex.Message;
         }
+        Last = 0;
         SchoolStuff.Fill(SelectedClass, SelectedSubject);
         FillGrid(CurMonth, CurYear);
     }
 
-    private async void Add_User(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void To_Add_Window(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         new SecondWindow().Show();
         this.Close();
@@ -158,5 +174,20 @@ public partial class MainWindow : Window
         UserManager.curentUser = null;
         new LoginWindow().Show();
         this.Close();
+    }
+
+    private void DataGrid_BeginningEdit(object? sender, Avalonia.Controls.DataGridBeginningEditEventArgs e)
+    {
+        var r = (List<string>)MainDataGrid.SelectedItem;
+        int a = MainDataGrid.SelectedIndex;
+        int b = Int32.Parse(MainDataGrid.CurrentColumn.Header.ToString());
+        if (Table[a][b] != "")
+        {
+            Last = Int32.Parse(Table[a][b]);
+        }
+    }
+    private async void To_Result(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        await new Results(SelectedClass, SelectedSubject, new DateTime(CurYear, CurMonth, 1)).ShowDialog(this);
     }
 }

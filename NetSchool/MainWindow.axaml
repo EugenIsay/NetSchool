@@ -17,21 +17,25 @@
 				<ComboBox SelectedIndex="0" SelectionChanged="Subject_SelectionChanged" Name="SelectSubject"/>
 				<ComboBox SelectedIndex="0" SelectionChanged="Class_SelectionChanged" Name="SelectClass"/>
 			</StackPanel>
-			<StackPanel Margin="15" HorizontalAlignment="Right" Orientation="Vertical">
-				<TextBlock Name="Name" Text="name "/>
+			
+			<StackPanel Margin="15" HorizontalAlignment="Right" Orientation="Horizontal">
+				<Border Margin="15,0" Background="White" CornerRadius="10">
+					<TextBlock Margin="15,0" HorizontalAlignment="Center" VerticalAlignment="Center" Name="Name" Text="name "/>
+				</Border>
 				<Button Content="Выйти" Click="Button_Exit"/>
 			</StackPanel>
 		</Grid>
 		<Grid DockPanel.Dock="Top">
-			<Button Click="Add_User" Background="#B0E0E6" HorizontalAlignment="Left" Content="В список" VerticalAlignment="Center" Margin="15,15,0,0" />
+			<Button Click="To_Add_Window" Background="#B0E0E6" HorizontalAlignment="Left" Content="В список" VerticalAlignment="Center" Margin="15,15,0,0" />
 			<TextBlock Name="MonthName" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Center" DockPanel.Dock="Top" Text="Error" />
+			<Button Click="To_Result" Background="#B0E0E6" HorizontalAlignment="Right" Content="Итоговые" VerticalAlignment="Center" Margin="0,15,15,0" />
 		</Grid>
 		<Grid Margin="20,-10,20,10"  DockPanel.Dock="Bottom">
 			<Button Background="#FFA500" Click="Previous" Content="Предидущий"/>
 			<Button Background="#FFA500" Click="Next" HorizontalAlignment="Right" Content="Следующий"/>
 		</Grid>
 		<DataGrid Margin="20"
-				  CellEditEnding=""
+				  BeginningEdit="DataGrid_BeginningEdit"
 				  CellEditEnded="DataGrid_CellEditEnded"
 				  GridLinesVisibility="All"
 				  Name="MainDataGrid"

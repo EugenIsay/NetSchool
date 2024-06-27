@@ -31,5 +31,9 @@ namespace NetSchool.Models
         { get => _subjects; set => _subjects = value; }
         public List<Subject> _subjects = new List<Subject>();
         public int FindMyId { get => SchoolStuff.students.FindIndex(s => s.Name == Name && s.Class == Class && s.Subjects == _subjects); }
+        public void Delete()
+        {
+            SchoolStuff.students.RemoveAt(FindMyId);
+        }
     }
 }

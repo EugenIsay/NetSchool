@@ -13,6 +13,7 @@
 		</Style>
 	</Window.Styles>
 	<DockPanel>
+		<TextBlock DockPanel.Dock="Bottom" IsVisible="False" Foreground="Red" HorizontalAlignment="Center" Name="Massage"/>
 		<TextBlock DockPanel.Dock="Top" Margin="0,15,0,0" TextAlignment="Center" FontSize="20" Foreground="Black" Text="Выберите какого пользователя хотите добавить"/>
 		<TextBlock DockPanel.Dock="Bottom" Margin="0,15" Text=""/>
 		<TabControl HorizontalAlignment="Center" DockPanel.Dock="Top" >
@@ -35,12 +36,12 @@
 						<TextBlock DockPanel.Dock="Top" Classes="h1" Text="Пароль"/>
 						<TextBox Name="TeachPass" DockPanel.Dock="Top"/>
 						<Button DockPanel.Dock="Bottom" Click="AddTeach" Content="Добвить"/>
-						<ListBox DockPanel.Dock="Top" ItemsSource="{x:Static local:SchoolStuff.Subjects_List}" Margin="0,15" Name="TecherSubjects" >
+						<ListBox DockPanel.Dock="Top" Margin="0,15" Name="TecherSubjects" >
 							<ListBox.ItemTemplate>
 								<DataTemplate>
 									<StackPanel>
-										<TextBlock Foreground="#4169E1" Text="{Binding}"/>
-										<CheckBox IsChecked="false" />
+										<TextBlock Foreground="#4169E1" Text="{Binding Name}"/>
+										<CheckBox IsChecked="{Binding Add}" />
 									</StackPanel>
 								</DataTemplate>
 							</ListBox.ItemTemplate>

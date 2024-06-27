@@ -12,9 +12,5 @@ namespace NetSchool.Models
         { get; set; }
         public DateTime? time
         { get; set; }
-        public Grade()
-        {
-            if (time == null) time = DateTime.Now;
-        }
     }
 }
