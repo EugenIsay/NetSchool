@@ -10,7 +10,7 @@ namespace NetSchool.Models
     {
         public string Name
         { get; set; }
-        public string Subject
+        public List<string> Subjects
         { get; set; }
     }
 }

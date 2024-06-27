@@ -12,9 +12,14 @@ namespace NetSchool
         public static string[] Subjects_List = { "История", "Математика", "Информатика", "Русский язык", "Химия", "География", "Обществознаним" };
         public static List<string> Class_List = new List<string>();
         public static List<Student> students = new List<Student>();
+        public static List<Teacher> teachers = new List<Teacher>();
 
         public static List<Response> ShownStudents = new List<Response>();
-
+        public static void AddTeacher(string Name, string Password, List<string> sub)
+        {
+            teachers.Add(new Teacher { Name = Name, Subjects = sub });
+            UserManager.AddUser(Name, Password, "teacher");
+        }
         public static void AddStudent(string name, string cur_class)
         {
             students.Add(new Student() { Name = name, Class = cur_class });

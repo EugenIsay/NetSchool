@@ -14,15 +14,16 @@
 	<DockPanel LastChildFill="True">
 		<Grid Background="#1E90FF" DockPanel.Dock="Top">
 			<StackPanel Margin="15" Orientation="Horizontal">
-				<ComboBox SelectionChanged="Subject_SelectionChanged" Name="SelectSubject"/>
-				<ComboBox SelectionChanged="Class_SelectionChanged" Name="SelectClass"/>
+				<ComboBox SelectedIndex="0" SelectionChanged="Subject_SelectionChanged" Name="SelectSubject"/>
+				<ComboBox SelectedIndex="0" SelectionChanged="Class_SelectionChanged" Name="SelectClass"/>
 			</StackPanel>
-			<StackPanel Margin="15" HorizontalAlignment="Right" Orientation="Horizontal">
+			<StackPanel Margin="15" HorizontalAlignment="Right" Orientation="Vertical">
 				<TextBlock Name="Name" Text="name "/>
+				<Button Content="Выйти" Click="Button_Exit"/>
 			</StackPanel>
 		</Grid>
 		<Grid DockPanel.Dock="Top">
-			<Button Click="Add_User" Background="#B0E0E6" HorizontalAlignment="Left" Content="Добавить пользователя" VerticalAlignment="Center" Margin="15,15,0,0" />
+			<Button Click="Add_User" Background="#B0E0E6" HorizontalAlignment="Left" Content="В список" VerticalAlignment="Center" Margin="15,15,0,0" />
 			<TextBlock Name="MonthName" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Center" DockPanel.Dock="Top" Text="Error" />
 		</Grid>
 		<Grid Margin="20,-10,20,10"  DockPanel.Dock="Bottom">

@@ -16,13 +16,22 @@ public partial class MainWindow : Window
     int CurYear = 2024;
     int SelectedSubject = 0;
     int SelectedClass = 0;
+    List<string> Subjects = new List<string>();
     public MainWindow()
     {
         InitializeComponent();
         Name.Text = UserManager.curentUser.Name;
+        if (UserManager.curentUser.Role == "teacher")
+        {
+            Subjects = SchoolStuff.teachers.FirstOrDefault(t => t.Name == UserManager.curentUser.Name).Subjects;
+        }
+        else
+        {
+            Subjects = SchoolStuff.Subjects_List.ToList();
+        }
         SelectSubject.ItemsSource = SchoolStuff.Subjects_List.ToList();
         SelectClass.ItemsSource = SchoolStuff.Class_List.ToList();
-        int SelectedSubject = 1;
+        int SelectedSubject = 0;
         int SelectedClass = 0;
         SelectSubject.SelectedIndex = SelectedSubject;
         SelectClass.SelectedIndex = SelectedClass;
@@ -102,14 +111,20 @@ public partial class MainWindow : Window
     private void Subject_SelectionChanged(object? sender, Avalonia.Controls.SelectionChangedEventArgs e)
     {
         SelectedSubject = SelectSubject.SelectedIndex;
-        SchoolStuff.Fill(SelectedClass, SelectedSubject);
-        FillGrid(CurMonth, CurYear);
+        if (SelectedClass != -1 && SelectedSubject != -1)
+        {
+            SchoolStuff.Fill(SelectedClass, SelectedSubject);
+            FillGrid(CurMonth, CurYear);
+        }
     }
     private void Class_SelectionChanged(object? sender, Avalonia.Controls.SelectionChangedEventArgs e)
     {
         SelectedClass = SelectClass.SelectedIndex;
-        SchoolStuff.Fill(SelectedClass, SelectedSubject);
-        FillGrid(CurMonth, CurYear);
+        if (SelectedClass != -1 && SelectedSubject != -1)
+        {
+            SchoolStuff.Fill(SelectedClass, SelectedSubject);
+            FillGrid(CurMonth, CurYear);
+        }
     }
     private void DataGrid_CellEditEnded(object? sender, Avalonia.Controls.DataGridCellEditEndedEventArgs e)
     {
@@ -134,6 +149,14 @@ public partial class MainWindow : Window
 
     private async void Add_User(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        await new AddUsers().ShowDialog(this);
+        new SecondWindow().Show();
+        this.Close();
+    }
+
+    private void Button_Exit(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        UserManager.curentUser = null;
+        new LoginWindow().Show();
+        this.Close();
     }
 }

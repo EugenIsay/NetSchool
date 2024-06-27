@@ -8,7 +8,7 @@
 		x:CompileBindings="False"
         Title="AddUsers">
 	<Window.Styles>
-		<Style Selector="TextBlock">
+		<Style Selector="TextBlock.h1">
 			<Setter Property="Foreground" Value="White"/>
 		</Style>
 	</Window.Styles>
@@ -20,7 +20,7 @@
 				<TabItem.HeaderTemplate>
 					<DataTemplate>
 						<Border Background="#1E90FF" CornerRadius="20,1"  BorderThickness="10">
-							<TextBlock Text="Добавить учителя"/>
+							<TextBlock Classes="h1" Text="Добавить учителя"/>
 						</Border>
 					</DataTemplate>
 				</TabItem.HeaderTemplate>
@@ -30,12 +30,12 @@
 						<ImageBrush Source="/Assets/add_back.png" Stretch="UniformToFill"/>
 					</Border.Background>
 					<DockPanel Margin="10">
-						<TextBlock DockPanel.Dock="Top" Text="Имя"/>
-						<TextBox DockPanel.Dock="Top"/>
-						<TextBlock DockPanel.Dock="Top" Text="Пароль"/>
-						<TextBox DockPanel.Dock="Top"/>
+						<TextBlock DockPanel.Dock="Top" Classes="h1" Text="Имя"/>
+						<TextBox Name="TeachName" DockPanel.Dock="Top"/>
+						<TextBlock DockPanel.Dock="Top" Classes="h1" Text="Пароль"/>
+						<TextBox Name="TeachPass" DockPanel.Dock="Top"/>
 						<Button DockPanel.Dock="Bottom" Click="AddTeach" Content="Добвить"/>
-						<ListBox DockPanel.Dock="Top" ItemsSource="{x:Static local:SchoolStuff.Subjects_List}" Margin="0,15" Name="StudentSubjects" >
+						<ListBox DockPanel.Dock="Top" ItemsSource="{x:Static local:SchoolStuff.Subjects_List}" Margin="0,15" Name="TecherSubjects" >
 							<ListBox.ItemTemplate>
 								<DataTemplate>
 									<StackPanel>
@@ -54,7 +54,7 @@
 				<TabItem.HeaderTemplate>
 					<DataTemplate>
 						<Border Background="#FFA500" CornerRadius="20,1"  BorderThickness="10">
-							<TextBlock Text="Добавить ученика"/>
+							<TextBlock Classes="h1" Text="Добавить ученика"/>
 						</Border>
 					</DataTemplate>
 				</TabItem.HeaderTemplate>
@@ -63,9 +63,9 @@
 						<ImageBrush Source="/Assets/add_back2.png" Stretch="UniformToFill"/>
 					</Border.Background>
 					<DockPanel Margin="10">
-						<TextBlock DockPanel.Dock="Top" Text="Имя"/>
+						<TextBlock Classes="h1" DockPanel.Dock="Top" Text="Имя"/>
 						<TextBox Name="StudName" DockPanel.Dock="Top"/>
-						<TextBlock DockPanel.Dock="Top" Text="Класс"/>
+						<TextBlock Classes="h1" DockPanel.Dock="Top" Text="Класс"/>
 						<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
 							<ComboBox Name="classNum" />
 							<ComboBox Name="classLetter"/>
